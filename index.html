@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>Skanowanie kodów kreskowych</title>
     <style>
-
         body { 
             font-family: Arial, sans-serif; 
             background-color: #f2f2f2; 
@@ -15,7 +14,6 @@
             height: 100vh; 
             margin: 0; 
         }
-
 
         .container { 
             max-width: 600px; 
@@ -74,7 +72,6 @@
             font-size: 1.1rem; 
         }
 
-
         .popular-products {
             margin-top: 20px;
             text-align: left;
@@ -95,6 +92,7 @@
         .item {
             text-align: center;
             width: 30%;
+            cursor: pointer;
         }
 
         .item img {
@@ -114,6 +112,53 @@
             font-size: 0.9rem;
             color: #333;
         }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+            text-align: center;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 8px;
+        }
+
+        .modal-content h3 {
+            color: #1491A2;
+        }
+
+        .modal-content p {
+            font-size: 1.1rem;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -128,23 +173,31 @@
         
         <div id="result"></div>
 
-
         <div class="popular-products">
             <h3>Popularne wyszukiwania:</h3>
             <div class="popular-items">
-                <div class="item">
+                <div class="item" onclick="showProductInfo('Folia aluminiowa', 'zielony')">
                     <img src="https://aleopakowania.pl/wp-content/uploads/2024/06/1235.jpg" alt="Folia">
                     <span>Folia aluminiowa</span>
                 </div>
-                <div class="item">
+                <div class="item" onclick="showProductInfo('Paragon', 'niebieski')">
                     <img src="https://www.wygranaonline.com/wp-content/uploads/2019/10/Paragon.jpg" alt="Paragon">
                     <span>Paragon</span>
                 </div>
-                <div class="item">
+                <div class="item" onclick="showProductInfo('Lays Chipsy', 'żółty')">
                     <img src="https://a.allegroimg.com/original/11d3e4/81db414f43edb7e87eb7b697d9ae/Lay-s-Lays-Chipsy-Mix-Zestaw-5-smakow-5x-130g" alt="Lays Chipsy">
                     <span>Lays Chipsy</span>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h3 id="modalTitle"></h3>
+            <p id="modalMessage"></p>
         </div>
     </div>
 
@@ -181,7 +234,7 @@
             const resultDiv = document.getElementById("result");
             if (products[inputBarcode]) {
                 const product = products[inputBarcode];
-                resultDiv.innerHTML = `Produkt: ${product.name} | Kosz: <span style="color:${product.bin};">${product.bin}</span>`;
+                showProductInfo(product.name, product.bin);
             } else {
                 resultDiv.innerHTML = "Produkt nieznaleziony w bazie.";
             }
@@ -189,6 +242,22 @@
 
         function startScanner() {
             alert("Opcja skanowania wymaga integracji z API kamery przeglądarki i zewnętrznego skanera.");
+        }
+
+        function showProductInfo(name, binColor) {
+            const modal = document.getElementById("myModal");
+            const modalTitle = document.getElementById("modalTitle");
+            const modalMessage = document.getElementById("modalMessage");
+
+            modalTitle.textContent = `Produkt: ${name}`;
+            modalMessage.innerHTML = `Kosz: <span style="color:${binColor};">${binColor}</span>`;
+
+            modal.style.display = "block";
+        }
+
+        function closeModal() {
+            const modal = document.getElementById("myModal");
+            modal.style.display = "none";
         }
     </script>
 </body>
