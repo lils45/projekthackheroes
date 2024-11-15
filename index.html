@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Skanowanie kodów kreskowych</title>
+    <style>
+
+        body { 
+            font-family: Arial, sans-serif; 
+            background-color: #f2f2f2; 
+            color: #333; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            margin: 0; 
+        }
+
+
+        .container { 
+            max-width: 600px; 
+            width: 100%; 
+            margin: auto; 
+            padding: 20px; 
+            border: 1px solid #1491A2; 
+            border-radius: 8px; 
+            background-color: #fff; 
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+            text-align: center; 
+        }
+
+        h2 { 
+            color: #1491A2; 
+            margin-bottom: 15px; 
+        }
+
+        label, button { 
+            font-size: 1rem; 
+            display: block; 
+            margin-bottom: 10px; 
+            color: #555; 
+        }
+
+        input { 
+            padding: 8px; 
+            width: calc(100% - 20px); 
+            margin-top: 5px; 
+            margin-bottom: 10px; 
+            font-size: 1rem; 
+            border: 1px solid #ccc; 
+            border-radius: 4px; 
+        }
+
+        button { 
+            background-color: #1491A2; 
+            color: white; 
+            padding: 10px 20px; 
+            font-size: 1rem; 
+            border: none; 
+            border-radius: 4px; 
+            cursor: pointer; 
+            transition: background-color 0.3s ease; 
+            width: 100%;
+        }
+
+        button:hover { 
+            background-color: #107687; 
+        }
+
+        #result { 
+            margin-top: 15px; 
+            padding: 10px; 
+            border-radius: 4px; 
+            font-size: 1.1rem; 
+        }
+
+
+        .popular-products {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .popular-products h3 {
+            color: #1491A2;
+            margin-bottom: 10px;
+        }
+
+        .popular-items {
+            display: flex;
+            justify-content: space-around;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .item {
+            text-align: center;
+            width: 30%;
+        }
+
+        .item img {
+            width: 70px;
+            height: 70px;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .item img:hover {
+            transform: scale(1.1);
+        }
+
+        .item span {
+            display: block;
+            margin-top: 8px;
+            font-size: 0.9rem;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Skanner kodów kreskowych</h2>
+
+        <label for="barcodeInput">Wprowadź kod kreskowy:</label>
+        <input type="text" id="barcodeInput" placeholder="Wpisz kod kreskowy">
+        <button onclick="checkProduct()">Sprawdź kod</button>
+
+        <button onclick="startScanner()">Rozpocznij skanowanie</button>
+        
+        <div id="result"></div>
+
+
+        <div class="popular-products">
+            <h3>Popularne wyszukiwania:</h3>
+            <div class="popular-items">
+                <div class="item">
+                    <img src="https://aleopakowania.pl/wp-content/uploads/2024/06/1235.jpg" alt="Folia">
+                    <span>Folia aluminiowa</span>
+                </div>
+                <div class="item">
+                    <img src="https://www.wygranaonline.com/wp-content/uploads/2019/10/Paragon.jpg" alt="Paragon">
+                    <span>Paragon</span>
+                </div>
+                <div class="item">
+                    <img src="https://a.allegroimg.com/original/11d3e4/81db414f43edb7e87eb7b697d9ae/Lay-s-Lays-Chipsy-Mix-Zestaw-5-smakow-5x-130g" alt="Lays Chipsy">
+                    <span>Lays Chipsy</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function loadDatabase() {
+            try {
+                const response = await fetch("produkty.txt?" + new Date().getTime());
+                if (!response.ok) throw new Error("Błąd ładowania pliku");
+                const data = await response.text();
+                const products = {};
+
+                data.split("\n").forEach(line => {
+                    const [barcode, name, bin] = line.trim().split(",");
+                    if (barcode && name && bin) {
+                        products[barcode.trim()] = { 
+                            name: name.trim(), 
+                            bin: bin.trim() 
+                        };
+                    }
+                });
+
+                return products;
+            } catch (error) {
+                console.error("Błąd wczytywania bazy danych:", error);
+                alert("Nie można załadować bazy danych produktów.");
+                return {};
+            }
+        }
+
+        async function checkProduct() {
+            const inputBarcode = document.getElementById("barcodeInput").value.trim();
+            const products = await loadDatabase();
+
+            const resultDiv = document.getElementById("result");
+            if (products[inputBarcode]) {
+                const product = products[inputBarcode];
+                resultDiv.innerHTML = `Produkt: ${product.name} | Kosz: <span style="color:${product.bin};">${product.bin}</span>`;
+            } else {
+                resultDiv.innerHTML = "Produkt nieznaleziony w bazie.";
+            }
+        }
+
+        function startScanner() {
+            alert("Opcja skanowania wymaga integracji z API kamery przeglądarki i zewnętrznego skanera.");
+        }
+    </script>
+</body>
+</html>

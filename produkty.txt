@@ -1,0 +1,59 @@
+1234567890128,Coca Cola,żółty - plastik
+2345678901234,Pepsi,żółty - plastik
+3456789012345,Fanta,żółty - plastik
+4567890123456,Sprite,żółty - plastik
+5678901234567,Lays Chips,żółty - plastik
+6789012345678,Doritos,żółty - plastik
+7890123456789,Red Bull,żółty - plastik
+8901234567890,Nestea,żółty - plastik
+9012345678901,Mountain Dew,żółty - plastik
+0123456789012,Snickers,żółty - plastik
+1123456789013,Mars,żółty - plastik
+2123456789014,KitKat,żółty - plastik
+3123456789015,Twix,żółty - plastik
+4123456789016,Oreo,żółty - plastik
+5123456789017,Nutella,żółty - plastik
+6123456789018,M&M's,żółty - plastik
+7123456789019,Milka,żółty - plastik
+8123456789020,Żywiec Zdrój,żółty - plastik
+9123456789021,Muszynianka,żółty - plastik
+1012345678902,Tymbark Jabłko,żółty - plastik
+1112345678903,Mirinda,żółty - plastik
+1212345678904,Lipton Ice Tea,żółty - plastik
+1312345678905,Cappy Pomarańczowy,żółty - plastik
+1412345678906,Hortex Pomarańcza,żółty - plastik
+1512345678907,Cisowianka,żółty - plastik
+1612345678908,Kubuś Marchewka,żółty - plastik
+1712345678909,Hell Energy,żółty - plastik
+1812345678910,Tiger Energy,żółty - plastik
+1912345678911,Fuzetea,żółty - plastik
+2012345678912,Mazurek Czekolada,żółty - plastik
+2112345678913,Lindor Czekolada,żółty - plastik
+2212345678914,Ritter Sport,żółty - plastik
+2312345678915,Wedel Czekolada,żółty - plastik
+2412345678916,Mieszko Cherrissimo,żółty - plastik
+2512345678917,Alpen Gold,żółty - plastik
+2612345678918,KitKat Chunky,żółty - plastik
+2712345678919,Milky Way,żółty - plastik
+2812345678920,Prince Polo,żółty - plastik
+2912345678921,Grześki,żółty - plastik
+3012345678922,Heineken,zielony - szkło
+3112345678923,Lech,zielony - szkło
+3212345678924,Żubr,zielony - szkło
+3312345678925,Okocim,zielony - szkło
+3412345678926,Tyskie,zielony - szkło
+3512345678927,Warka,zielony - szkło
+3612345678928,Kropla Beskidu,żółty - plastik
+3712345678929,Vivus,żółty - plastik
+3812345678930,Evian,żółty - plastik
+3912345678931,Ogryzek jabłka,brązowy - bioodpady
+4112345678933,Jajka,opakowanie niebieski - papier skorupka brązowy - bioodpady
+4212345678934,Herbata w torebce,brązowy - bioodpady
+4312345678935,Folia aluminiowa po czekoladzie,żółty - plastik
+4412345678936,Butelka po winie,zielony - szkło
+4512345678937,Gazeta,niebieski - papier
+4612345678938,Kartonik po mleku,żółty - plastik
+4712345678939,Butelka po oliwie,zielony - szkło
+4812345678940,Chleb zeschnięty,brązowy - bioodpady
+4912345678941,Torebka papierowa,niebieski - papier
+5012345678942,Puszka po napoju,żółty - plastik
